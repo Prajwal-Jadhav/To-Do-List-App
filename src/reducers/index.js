@@ -6,8 +6,7 @@ export const addPostToListReducer = (oldTaskList = [], action) => {
   } else if (action.type === "CHANGE_COMPLETE_STATUS") {
     return oldTaskList.map(task => {
       if (task.id === action.payload.uniqId) {
-        task.isCompleted = !task.isCompleted;
-        return task;
+        return Object.assign({}, task, { isCompleted: !task.isCompleted });
       }
 
       return task;

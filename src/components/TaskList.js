@@ -9,11 +9,13 @@ const TaskList = ({ taskList }) => {
   return (
     <div>
       {taskList.map(task => (
-        <Task isCompleted={task.isCompleted} task={task} />
+        <Task task={task} />
       ))}
     </div>
   );
 };
+
+//isCompleted={task.isCompleted}
 
 const mapStateToProps = state => {
   console.log(state);
