@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@400;700&display=swap");
+
+body {
+  background-color: rgb(14, 14, 14);
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  margin-top: 30px;
+}
+
+.App-header {
+  margin-bottom: 0px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.author__name {
+  margin-bottom: 30px;
+  font-size: 12px;
+}
+
+.InputBar {
+  margin-bottom: 30px;
+}
+
+.input {
+  width: 500px;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 2px solid rgb(255, 196, 0);
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 18px;
+  background-color: rgb(58, 58, 58);
+  color: white;
+}
+
+.submit__btn {
+  margin-left: 15px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 5px;
+  width: 80px;
+  cursor: pointer;
+  background-color: rgb(255, 196, 0);
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.submit__btn:hover {
+  opacity: 0.8;
+}
+
+.Task {
+  width: 600px;
+  margin: 0 auto 20px;
+  border: 1px solid black;
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(58, 58, 58);
+  border-radius: 10px;
+  position: relative;
+}
+
+.task__text__div {
+  width: 550px;
+  display: flex;
+}
+
+.task__text {
+  word-wrap: break-word;
+  word-wrap: anywhere;
+  line-height: 1.5;
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.task__text.crossed-line {
+  text-decoration: line-through;
+}
+
+.fa-trash-alt {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  color: rgb(252, 59, 59);
+  cursor: pointer;
+}
+
+.prompt__message {
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "IBM Plex Sans", sans-serif;
+  color: rgb(58, 58, 58);
+}
