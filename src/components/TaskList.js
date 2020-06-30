@@ -15,8 +15,6 @@ const TaskList = ({ taskList }) => {
   );
 };
 
-//isCompleted={task.isCompleted}
-
 const mapStateToProps = state => {
   console.log(state);
   return {
