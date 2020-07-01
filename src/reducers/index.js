@@ -27,7 +27,18 @@ const inputValueReducer = (oldInputValue = "", action) => {
   return oldInputValue;
 };
 
+const authReducer = (state = false, action) => {
+  switch (action.type) {
+    case "FETCH_CURRENT_USER":
+      if (!action.payload) return null;
+      else return true;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   taskList: addPostToListReducer,
   inputValue: inputValueReducer,
+  auth: authReducer,
 });
