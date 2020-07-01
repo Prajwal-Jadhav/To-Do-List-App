@@ -39,6 +39,24 @@ body {
   font-weight: 600;
 }
 
+.AuthButton {
+  position: fixed;
+  right: 20px;
+  padding: 10px 10px;
+  text-align: center;
+  background-color: rgb(255, 196, 0);
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 18px;
+}
+
 .author__name {
   margin-bottom: 30px;
   font-size: 12px;
