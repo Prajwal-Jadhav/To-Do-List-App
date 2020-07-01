@@ -1,16 +1,17 @@
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import "./App.css";
-import InputBar from "./InputBar";
-import TaskList from "./TaskList";
+import Dashboard from "./Dashboard";
+import LandingPage from "./LandingPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">To-Do-List</header>
-      <p className="author__name">created with ❤ by Prajwal Jadhav</p>
-      <InputBar />
-      <TaskList />
+      <BrowserRouter>
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/dashboard" component={Dashboard} />
+      </BrowserRouter>
     </div>
   );
 }

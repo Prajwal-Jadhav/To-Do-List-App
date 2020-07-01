@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class LandingPage extends Component {
   render() {
     return (
-      <div classNam="LandingPage">
+      <div className="LandingPage">
         <h1 className="LandingPage__header">Notejet</h1>
         <p className="LandingPage__subheader--primary">
           A simple, straight-forward and distraction free way of making
