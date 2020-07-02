@@ -21,13 +21,15 @@ export const fetchAllPosts = () => async dispatch => {
   dispatch({ type: "FETCH_ALL_NOTES", payload: res.data });
 };
 
-export const deleteTask = id => {
-  return {
-    type: "DELETE_TASK",
-    payload: {
-      deleteId: id,
-    },
-  };
+export const deleteTask = taskId => async dispatch => {
+  const res = await axios.delete(
+    `http://localhost:8000/api/v1/notes/${taskId}`,
+    { withCredentials: true }
+  );
+
+  console.log(res.data);
+
+  dispatch({ type: "DELETE_TASK", payload: res.data });
 };
 
 export const changeInputValue = text => {
@@ -39,13 +41,16 @@ export const changeInputValue = text => {
   };
 };
 
-export const changeCompleteStatus = id => {
-  return {
-    type: "CHANGE_COMPLETE_STATUS",
-    payload: {
-      uniqId: id,
-    },
-  };
+export const changeCompleteStatus = (taskId, status) => async dispatch => {
+  const res = await axios.patch(
+    `http://localhost:8000/api/v1/notes/${taskId}`,
+    { completed: !status },
+    { withCredentials: true }
+  );
+
+  console.log(res.data);
+
+  dispatch({ type: "CHANGE_COMPLETE_STATUS", payload: res.data });
 };
 
 // To Do change to real heroku address
@@ -54,7 +59,6 @@ export const fetchCurrentUser = () => {
     const res = await axios.get("http://localhost:8000/auth/current_user", {
       withCredentials: true,
     });
-    console.log(res);
 
     dispatch({ type: "FETCH_CURRENT_USER", payload: res.data });
   };

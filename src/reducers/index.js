@@ -8,35 +8,18 @@ export const addPostToListReducer = (oldTaskList = [], action) => {
       return [...oldTaskList, action.payload];
     case "CHANGE_COMPLETE_STATUS":
       return oldTaskList.map(task => {
-        if (task.id === action.payload.uniqId) {
-          return Object.assign({}, task, { isCompleted: !task.isCompleted });
+        if (task._id === action.payload._id) {
+          return Object.assign({}, task, { completed: !task.completed });
         }
 
         return task;
       });
     case "DELETE_TASK":
-      return oldTaskList.filter(task => task.id !== action.payload.deleteId);
+      return oldTaskList.filter(task => task._id !== action.payload._id);
     default:
       return oldTaskList;
   }
 };
-
-//   if (action.type === "CREATE_TASK") {
-//     return [...oldTaskList, action.payload];
-//   } else if (action.type === "CHANGE_COMPLETE_STATUS") {
-//     return oldTaskList.map(task => {
-//       if (task.id === action.payload.uniqId) {
-//         return Object.assign({}, task, { isCompleted: !task.isCompleted });
-//       }
-
-//       return task;
-//     });
-//   } else if (action.type === "DELETE_TASK") {
-//     return oldTaskList.filter(task => task.id !== action.payload.deleteId);
-//   }
-
-//   return oldTaskList;
-// };
 
 const inputValueReducer = (oldInputValue = "", action) => {
   if (action.type === "CHANGE_INPUT") {

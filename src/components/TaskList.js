@@ -9,7 +9,7 @@ const TaskList = ({ taskList }) => {
   return (
     <div>
       {taskList.map(task => (
-        <Task task={task} />
+        <Task key={task._id} task={task} />
       ))}
     </div>
   );

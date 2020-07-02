@@ -8,18 +8,19 @@ function Task({ task, changeCompleteStatus, deleteTask }) {
       <div className="task__text__div">
         <input
           type="checkbox"
-          id={task.id}
+          id={task._id}
           name="status"
-          onChange={() => changeCompleteStatus(task.id)}
+          checked={task.completed}
+          onChange={() => changeCompleteStatus(task._id, task.completed)}
         />
         <label
           htmlFor={task.id}
-          className={"task__text" + (task.isCompleted ? " crossed-line" : "")}
+          className={"task__text" + (task.completed ? " crossed-line" : "")}
         >
           {task.text}
         </label>
       </div>
-      <i className="fas fa-trash-alt" onClick={() => deleteTask(task.id)}></i>
+      <i className="fas fa-trash-alt" onClick={() => deleteTask(task._id)}></i>
     </div>
   );
 }
