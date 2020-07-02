@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 
 import { fetchCurrentUser } from "../actions/index";
+import history from "../history";
 
 import "./App.css";
 import Dashboard from "./Dashboard";
@@ -17,11 +18,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <BrowserRouter>
+        <Router history={history}>
           <AuthButton />
           <Route exact path="/" component={LandingPage} />
           <Route path="/dashboard" component={Dashboard} />
-        </BrowserRouter>
+        </Router>
       </div>
     );
   }
