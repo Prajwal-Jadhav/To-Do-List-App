@@ -1,22 +1,42 @@
 import { combineReducers } from "redux";
 
 export const addPostToListReducer = (oldTaskList = [], action) => {
-  if (action.type === "CREATE_TASK") {
-    return [...oldTaskList, action.payload];
-  } else if (action.type === "CHANGE_COMPLETE_STATUS") {
-    return oldTaskList.map(task => {
-      if (task.id === action.payload.uniqId) {
-        return Object.assign({}, task, { isCompleted: !task.isCompleted });
-      }
+  switch (action.type) {
+    case "FETCH_ALL_NOTES":
+      return action.payload;
+    case "CREATE_TASK":
+      return [...oldTaskList, action.payload];
+    case "CHANGE_COMPLETE_STATUS":
+      return oldTaskList.map(task => {
+        if (task.id === action.payload.uniqId) {
+          return Object.assign({}, task, { isCompleted: !task.isCompleted });
+        }
 
-      return task;
-    });
-  } else if (action.type === "DELETE_TASK") {
-    return oldTaskList.filter(task => task.id !== action.payload.deleteId);
+        return task;
+      });
+    case "DELETE_TASK":
+      return oldTaskList.filter(task => task.id !== action.payload.deleteId);
+    default:
+      return oldTaskList;
   }
-
-  return oldTaskList;
 };
+
+//   if (action.type === "CREATE_TASK") {
+//     return [...oldTaskList, action.payload];
+//   } else if (action.type === "CHANGE_COMPLETE_STATUS") {
+//     return oldTaskList.map(task => {
+//       if (task.id === action.payload.uniqId) {
+//         return Object.assign({}, task, { isCompleted: !task.isCompleted });
+//       }
+
+//       return task;
+//     });
+//   } else if (action.type === "DELETE_TASK") {
+//     return oldTaskList.filter(task => task.id !== action.payload.deleteId);
+//   }
+
+//   return oldTaskList;
+// };
 
 const inputValueReducer = (oldInputValue = "", action) => {
   if (action.type === "CHANGE_INPUT") {

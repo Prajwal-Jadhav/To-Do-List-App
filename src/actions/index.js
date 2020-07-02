@@ -1,14 +1,24 @@
 import axios from "axios";
 
-export const createTask = (text, randomIdGenerator) => {
-  return {
-    type: "CREATE_TASK",
-    payload: {
+export const createTask = text => async dispatch => {
+  const res = await axios.post(
+    "http://localhost:8000/api/v1/notes",
+    {
       text: text,
-      id: randomIdGenerator(),
-      isCompleted: false,
     },
-  };
+    { withCredentials: true }
+  );
+
+  dispatch({ type: "CREATE_TASK", payload: res.data });
+};
+
+export const fetchAllPosts = () => async dispatch => {
+  const res = await axios.get("http://localhost:8000/api/v1/notes", {
+    withCredentials: true,
+  });
+
+  console.log(res.data);
+  dispatch({ type: "FETCH_ALL_NOTES", payload: res.data });
 };
 
 export const deleteTask = id => {
