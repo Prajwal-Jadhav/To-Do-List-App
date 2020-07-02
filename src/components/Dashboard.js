@@ -1,9 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import InputBar from "./InputBar";
 import TaskList from "./TaskList";
 
-export default class Dashboard extends Component {
+class Dashboard extends Component {
+  componentDidMount() {
+    if (this.props.auth === false) {
+      this.props.history.push("/");
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.auth !== this.props.auth) {
+      if (this.props.auth === false) {
+        this.props.history.push("/");
+      }
+    }
+  }
+
   render() {
     return (
       <>
@@ -15,3 +31,12 @@ export default class Dashboard extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    auth: state.auth,
+  };
+};
+
+// Using withRouter to get access to history object
+export default withRouter(connect(mapStateToProps)(Dashboard));

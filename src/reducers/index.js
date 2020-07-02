@@ -27,10 +27,10 @@ const inputValueReducer = (oldInputValue = "", action) => {
   return oldInputValue;
 };
 
-const authReducer = (state = false, action) => {
+const authReducer = (state = null, action) => {
   switch (action.type) {
     case "FETCH_CURRENT_USER":
-      if (!action.payload) return null;
+      if (!action.payload) return false;
       else return true;
     default:
       return state;
