@@ -4,7 +4,9 @@ export default class AuthButton extends Component {
   render() {
     return (
       <button className="AuthButton">
-        <a href="http://localhost:8000/auth/google">Sign In with Google</a>
+        <a href={`${process.env.REACT_APP_API_ADDRESS}/auth/google`}>
+          Sign In with Google
+        </a>
       </button>
     );
   }

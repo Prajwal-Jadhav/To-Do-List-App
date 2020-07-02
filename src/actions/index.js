@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const createTask = text => async dispatch => {
   const res = await axios.post(
-    "http://localhost:8000/api/v1/notes",
+    `${process.env.REACT_APP_API_ADDRESS}/api/v1/notes`,
     {
       text: text,
     },
@@ -13,9 +13,12 @@ export const createTask = text => async dispatch => {
 };
 
 export const fetchAllPosts = () => async dispatch => {
-  const res = await axios.get("http://localhost:8000/api/v1/notes", {
-    withCredentials: true,
-  });
+  const res = await axios.get(
+    `${process.env.REACT_APP_API_ADDRESS}/api/v1/notes`,
+    {
+      withCredentials: true,
+    }
+  );
 
   console.log(res.data);
   dispatch({ type: "FETCH_ALL_NOTES", payload: res.data });
@@ -23,7 +26,7 @@ export const fetchAllPosts = () => async dispatch => {
 
 export const deleteTask = taskId => async dispatch => {
   const res = await axios.delete(
-    `http://localhost:8000/api/v1/notes/${taskId}`,
+    `${process.env.REACT_APP_API_ADDRESS}/api/v1/notes/${taskId}`,
     { withCredentials: true }
   );
 
@@ -43,7 +46,7 @@ export const changeInputValue = text => {
 
 export const changeCompleteStatus = (taskId, status) => async dispatch => {
   const res = await axios.patch(
-    `http://localhost:8000/api/v1/notes/${taskId}`,
+    `${process.env.REACT_APP_API_ADDRESS}/api/v1/notes/${taskId}`,
     { completed: !status },
     { withCredentials: true }
   );
@@ -56,9 +59,12 @@ export const changeCompleteStatus = (taskId, status) => async dispatch => {
 // To Do change to real heroku address
 export const fetchCurrentUser = () => {
   return async dispatch => {
-    const res = await axios.get("http://localhost:8000/auth/current_user", {
-      withCredentials: true,
-    });
+    const res = await axios.get(
+      `${process.env.REACT_APP_API_ADDRESS}/auth/current_user`,
+      {
+        withCredentials: true,
+      }
+    );
 
     dispatch({ type: "FETCH_CURRENT_USER", payload: res.data });
   };
